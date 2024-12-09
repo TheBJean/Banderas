@@ -1,0 +1,87 @@
+/* Configuración general */
+body {
+    margin: 0;
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+}
+
+.score {
+    margin-bottom: 1.25em; /* 20px = 1.25em */
+    font-size: 1.5em; /* 24px = 1.5em */
+    font-weight: bold;
+    color: #333;
+}
+
+.flags {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.25em; /* 20px = 1.25em */
+    align-items: center;
+}
+
+/* Al tener en cuenta que 16px son 1em, hacemos la copnversion la cual por ejemplo em=px/16px em = 104/16 = 6.5em*/
+.flag {
+    width: 15.625em; /* 250px = 15.625em */
+    height: 9.375em; /* 150px = 9.375em */
+    border: 0.125em solid #333; /* 2px = 0.125em */
+    border-radius: 0.5em; /* 8px = 0.5em */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    overflow: hidden; /* Asegura que el escudo no se salga del contenedor */
+    transition: background 3s, border-color 3s, transform 3s; /* Transición gradual */
+}
+
+.flag::before {
+    content: '';
+    position: absolute;
+    width: 6.50em; /* 104px = 6.25em */
+    height: 6.50em; /* 104px = 6.25em */
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 1;
+    opacity: 0; /* Oculta el escudo por defecto */
+    transition: opacity 3s; /* Transición gradual para el escudo */
+}
+
+/* Ecuador */
+.flag.ecuador {
+    background: #f4f4f4; /* Color inicial */
+}
+
+.flag.ecuador:active {
+    background: linear-gradient(to bottom, #fcd116 33%, #003893 33%, #003893 66%, #ff0000 66%);
+    border-color: #fcd116;
+    transform: scale(1.1); /* Efecto de crecimiento al hacer clic */
+}
+
+.flag.ecuador:active::before {
+    background-image: url('imagenes/Escudo_de_11900-removebg-preview.png'); /* Ruta al escudo de Ecuador */
+    opacity: 1; /* Muestra el escudo */
+}
+
+/* Colombia */
+.flag.colombia {
+    background: #ffffff; /* Color inicial */
+}
+
+.flag.colombia:hover {
+    background: linear-gradient(to bottom, #fcd116 33%, #003893 33%, #003893 66%, #ce1126 66%);
+    border-color: #ce1126;
+    transform: scale(1.05); /* Ligero efecto de zoom al pasar el cursor */
+}
+
+.flag.colombia:hover::before {
+    background-image: url('imagenes/escudo-de-colombia8163-removebg-preview.png'); /* Ruta al escudo de Colombia */
+    opacity: 1; /* Muestra el escudo */
+}
